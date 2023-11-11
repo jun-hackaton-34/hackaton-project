@@ -1,11 +1,9 @@
-import Profile from './components/sample/profile'
-import './App.scss'
+import Profile from './components/sample/profile';
+
+import './App.scss';
 
 function App() {
-
-  return (
-    <Profile />
-  )
+  return <Profile />;
 }
 
-export default App
+export default App;
