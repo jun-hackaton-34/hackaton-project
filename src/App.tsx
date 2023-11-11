@@ -1,9 +1,9 @@
-import Profile from './components/sample/profile';
+import Main from './pages/main/main';
 
 import './App.scss';
 
 function App() {
-  return <Profile />;
+  return <Main />;
 }
 
 export default App;
