@@ -1,9 +1,13 @@
 import clsx from 'clsx';
-import { generateMaze } from '../../helpers';
 import styles from './maze.module.scss';
 
-function Maze(): JSX.Element {
-  const maze = generateMaze(15, 15);
+
+type MazeProps = {
+  maze: number[][][];
+}
+
+
+function Maze({ maze }: MazeProps): JSX.Element {
 
   return (
     <div>
@@ -11,7 +15,7 @@ function Maze(): JSX.Element {
         <tbody>
           {maze.map((row, i) => (
             <tr key={`row-${i}`} >
-              {row.map((cell, j: number) => (
+              {row.map((cell, j) => (
                 <td
                   key={`cell-${i}-${j}`}
                   className={clsx(

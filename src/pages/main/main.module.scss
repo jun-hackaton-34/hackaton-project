@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+}
+
+.button {
+  margin-bottom: 30px;
+}
