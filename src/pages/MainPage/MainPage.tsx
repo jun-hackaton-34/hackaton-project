@@ -1,5 +1,5 @@
 import Maze from '../../components/Maze';
 
-export function Main(): JSX.Element {
+export function MainPage(): JSX.Element {
   return <Maze />;
 }
