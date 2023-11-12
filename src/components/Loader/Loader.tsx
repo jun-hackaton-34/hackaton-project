@@ -1,10 +1,10 @@
-import './Loader.module.scss';
+import styles from './Loader.module.scss';
 
 export function Loader() {
   return (
-    <div className="loading">
-      <div className="loading__spinner" />
-      <p className="loading__text">Loading...</p>
+    <div className={styles.loading}>
+      <div className={styles.loading__spinner} />
+      <p className={styles.loading__text}>Loading...</p>
     </div>
   );
 }
