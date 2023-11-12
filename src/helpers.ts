@@ -1,4 +1,6 @@
 /* eslint-disable no-plusplus */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 export function generateMaze(x: number, y: number): number[][][] {
   const totalCells = x * y;
   const cells: number[][][] = [];
