@@ -1,9 +1,16 @@
-import Profile from './components/sample/profile';
+import { Outlet } from 'react-router-dom';
+
+import Header from './components/Header';
 
 import './App.scss';
 
 function App() {
-  return <Profile />;
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
 }
 
 export default App;
