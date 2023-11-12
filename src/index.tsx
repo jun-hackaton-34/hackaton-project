@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
@@ -19,7 +18,7 @@ import Register from './components/Register';
 import Rules from './components/Rules';
 import UpdatePassword from './components/UpdatePassword';
 import AuthProvider from './context/AuthProvider';
-import Main from './pages/Main';
+import MainPage from './pages/MainPage';
 import App from './App.tsx';
 
 import './index.scss';
@@ -38,7 +37,11 @@ const router = createBrowserRouter(
         errorElement={<ErrorFallback />}
       />
       <Route path="/" element={<App />} errorElement={<ErrorFallback />}>
-        <Route path="/" element={<Main />} errorElement={<ErrorFallback />} />
+        <Route
+          path="/"
+          element={<MainPage />}
+          errorElement={<ErrorFallback />}
+        />
         <Route
           path="/login"
           element={<Login />}
