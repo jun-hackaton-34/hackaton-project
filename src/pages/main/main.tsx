@@ -1,10 +1,5 @@
-import Maze from "../../components/maze/maze";
+import Maze from '../../components/Maze';
 
-function Main(): JSX.Element {
-
-  return (
-    <Maze />
-  )
+export function Main(): JSX.Element {
+  return <Maze />;
 }
-
-export default Main;
