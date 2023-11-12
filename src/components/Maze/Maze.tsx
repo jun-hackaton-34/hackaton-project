@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 import { generateMaze } from '../../helpers';
 
-import styles from './maze.module.scss';
+import styles from './Maze.module.scss';
 
 export function Maze(): JSX.Element {
   const maze = generateMaze(15, 15);
