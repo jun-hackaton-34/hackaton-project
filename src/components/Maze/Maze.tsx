@@ -8,7 +8,7 @@ export function Maze(): JSX.Element {
   const maze = generateMaze(15, 15);
 
   return (
-    <div>
+    <div className={styles.maze__wrapper}>
       <table className={styles.maze}>
         <tbody>
           {maze.map((row, i) => (
