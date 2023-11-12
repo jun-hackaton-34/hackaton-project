@@ -1,3 +1,3 @@
-import { Maze } from './Maze';
+import { Maze } from './maze';
 
 export default Maze;
