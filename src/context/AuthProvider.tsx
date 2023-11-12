@@ -26,7 +26,7 @@ const signOut = () => supabase.auth.signOut();
 
 const passwordReset = (email: string) =>
   supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: 'http://localhost:5173/updatepassword',
+    redirectTo: 'https://hackaton-project-dun.vercel.app/updatepassword',
   });
 
 const updatePassword = (updatedPassword: string) =>
