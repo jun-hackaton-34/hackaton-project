@@ -6,6 +6,8 @@ import { supabase } from '../../lib/supabase';
 import IErrorState from '../../resources/ErrorState.interface';
 import Button from '../Button';
 
+import styles from './Register.module.scss';
+
 export function Register() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { user }: any = useAuth();
@@ -51,7 +53,7 @@ export function Register() {
   return user ? (
     <div>Вы уже вошли как {user.email}</div>
   ) : (
-    <div>
+    <div className={styles.register}>
       <h2>Регистрация</h2>
       <label htmlFor="email">
         Эл. почта:

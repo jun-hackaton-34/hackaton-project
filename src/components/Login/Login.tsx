@@ -6,6 +6,8 @@ import { supabase } from '../../lib/supabase';
 import IErrorState from '../../resources/ErrorState.interface';
 import Button from '../Button';
 
+import styles from './Login.module.scss';
+
 export function Login() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { user }: any = useAuth();
@@ -51,7 +53,7 @@ export function Login() {
   return user ? (
     <div>Вы уже вошли как {user.email}</div>
   ) : (
-    <div>
+    <div className={styles.login}>
       <h2>Добро пожаловать!</h2>
       <label htmlFor="email">
         Эл. почта:

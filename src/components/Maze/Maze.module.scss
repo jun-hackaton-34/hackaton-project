@@ -1,7 +1,29 @@
+.maze__wrapper {
+  background-color: rgba(255, 252, 255, 0.25);
+  padding: 2rem;
+  margin-top: auto;
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.9);
+}
+
 .maze {
+  position: relative;
   width: 500px;
   height: 500px;
   border-collapse: collapse;
+  background-image: url(../../../public/maze-bg.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.maze::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 98%;
+  height: 98%;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .top-border {
