@@ -1,25 +1,32 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { useAuth } from '../../context/AuthProvider';
 import { supabase } from '../../lib/supabase';
 import IErrorState from '../../resources/ErrorState.interface';
 import Button from '../Button';
 
 export function Login() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { user }: any = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<IErrorState>({
     error: false,
     errorMessage: '',
   });
 
+  const navigate = useNavigate();
+
   const handleLogin = async () => {
+    setLoading(true);
     setError({
       error: false,
       errorMessage: '',
     });
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -30,8 +37,9 @@ export function Login() {
           errorMessage: error,
         });
       } else {
-        console.error('Logged in successfully:', data);
+        navigate('/');
       }
+      setLoading(false);
     } catch (error) {
       setError({
         error: false,
@@ -40,9 +48,11 @@ export function Login() {
     }
   };
 
-  return (
+  return user ? (
+    <div>Вы уже вошли как {user.email}</div>
+  ) : (
     <div>
-      <h2>Добро пожаловать снова</h2>
+      <h2>Добро пожаловать!</h2>
       <label htmlFor="email">
         Эл. почта:
         <input
@@ -62,7 +72,9 @@ export function Login() {
         />
       </label>
 
-      <Button onClick={handleLogin}>Войти</Button>
+      <Button onClick={handleLogin} disabled={loading}>
+        {loading ? 'Загрузка' : 'Войти'}
+      </Button>
       {error.error && <div>{String(error.errorMessage)}</div>}
       <div>
         <p>

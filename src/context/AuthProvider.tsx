@@ -7,6 +7,7 @@ import {
 } from 'react';
 import { User } from '@supabase/supabase-js';
 
+import Loader from '../components/Loader';
 import { supabase } from '../lib/supabase';
 import { IAuthContext } from '../resources/AuthContext.interface';
 
@@ -78,7 +79,7 @@ function AuthProvider({ children }: AuthProviderProps) {
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{ auth, user, login, signOut, passwordReset, updatePassword }}
     >
-      {loading ? 'Loading' : children}
+      {loading ? <Loader /> : children}
     </AuthContext.Provider>
   );
 }

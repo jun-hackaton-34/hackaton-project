@@ -1,24 +1,32 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { useAuth } from '../../context/AuthProvider';
 import { supabase } from '../../lib/supabase';
 import IErrorState from '../../resources/ErrorState.interface';
 import Button from '../Button';
 
 export function Register() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { user }: any = useAuth();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<IErrorState>({
     error: false,
     errorMessage: '',
   });
 
+  const navigate = useNavigate();
+
   const handleRegister = async () => {
+    setLoading(true);
     setError({
       error: false,
       errorMessage: '',
     });
     try {
-      const { data, error } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signUp({
         email,
         password,
       });
@@ -29,8 +37,9 @@ export function Register() {
           errorMessage: error,
         });
       } else {
-        console.error('Signed up successfully:', data);
+        navigate('/');
       }
+      setLoading(false);
     } catch (error) {
       setError({
         error: true,
@@ -39,7 +48,9 @@ export function Register() {
     }
   };
 
-  return (
+  return user ? (
+    <div>Вы уже вошли как {user.email}</div>
+  ) : (
     <div>
       <h2>Регистрация</h2>
       <label htmlFor="email">
@@ -61,8 +72,15 @@ export function Register() {
         />
       </label>
 
-      <Button onClick={handleRegister}>Зарегистрироваться</Button>
+      <Button onClick={handleRegister} disabled={loading}>
+        {loading ? 'Загрузка' : 'Зарегистрироваться'}
+      </Button>
       {error.error && <div>{String(error.errorMessage)}</div>}
+      <div>
+        <p>
+          Уже есть аккаунт? <Link to="/login">Войти</Link>
+        </p>
+      </div>
     </div>
   );
 }
