@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, MouseEvent, ReactNode } from 'react';
 
-import './Button.module.scss';
+import styles from './Button.module.scss';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
@@ -9,7 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function Button({ onClick, children }: ButtonProps) {
   return (
-    <button type="button" className="btn" onClick={onClick}>
+    <button type="button" className={styles.btn} onClick={onClick}>
       {children ?? 'Click'}
     </button>
   );
